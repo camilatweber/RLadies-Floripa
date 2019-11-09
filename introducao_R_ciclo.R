@@ -8,8 +8,8 @@ data <- seq(as.Date('2019-09-29'), by=1, len=31)
 dia_ciclo <- c(seq(26,29), seq(1,27))
 
 #vetor que informa o periodo do ciclo
-periodo <- c(rep('Pré Menstrual', 4), rep('Menstruando', 6), rep('Pré Ovulatória', 8),
-             rep('Ovulatória', 8), rep('Pré Menstrual', 5))
+periodo <- c(rep('PrÃ© Menstrual', 4), rep('Menstruando', 6), rep('PrÃ© OvulatÃ³ria', 8),
+             rep('OvulatÃ³ria', 8), rep('PrÃ© Menstrual', 5))
 
 #vetor que informa qual qual o sentimento no dia do ciclo
 sentimento <- c(rep('triste', 2), 'sensivel', 'deprimida', 'triste', 'animada', 'triste',
@@ -17,7 +17,7 @@ sentimento <- c(rep('triste', 2), 'sensivel', 'deprimida', 'triste', 'animada', 
                 'feliz', 'animada', 'reflexiva', rep('radiante', 3),
                 rep('animada', 2), 'feliz', 'triste', rep('irritada', 3), rep('triste',2))
 
-#vetor que informa se teve colica ou não, caso teve colica é 1, se não teve colica é 0
+#vetor que informa se teve colica ou nÃ£o, caso teve colica Ã© 1, se nÃ£o teve colica Ã© 0
 colica <- c(0, rep(1, 6), rep(0, 22), rep(1, 2))
 
 #vetor que informa a quantidade de absorventes descartaveis utiliados durante o ciclo
@@ -38,7 +38,7 @@ df <- cbind.data.frame(data, dia_ciclo, periodo, sentimento, colica,
 #para olhar o data frame criado
 View(df)
 
-#para remover vetores, pois já estão todos no data frame
+#para remover vetores, pois jÃ¡ estÃ£o todos no data frame
 rm(colica, data, dia_ciclo, fluxo_absorvente, fluxo_coletor_ml, periodo, sentimento, temperatura_basal)
 
 #para localizar e imprimir dados do dataframe
@@ -57,20 +57,20 @@ abs <- sum(df$fluxo_absorvente)
 #chamar pacote instalado
 library(stringr)
 #Imprimi quantos absorventes foi utilizado no ciclo
-str_c('Neste ciclo foram utilizados ', abs, ' absorventes descartáveis')
+str_c('Neste ciclo foram utilizados ', abs, ' absorventes descartÃ¡veis')
 
 #resumo das variaveis do dataframe
 summary(df)
 
-#tabela de contingencia - relação de sentimento com o periodo no ciclo mestrual
+#tabela de contingencia - relaÃ§Ã£o de sentimento com o periodo no ciclo mestrual
 table(df$periodo, df$sentimento)
-#gráfico dos dias do ciclo e a temperatura corporal
+#grÃ¡fico dos dias do ciclo e a temperatura corporal
 plot(df$dia_ciclo, df$temperatura_basal)
 
 #atalho para usar as variaveis do dataframe
-#para não precisar toda fez que quiser utilizar uma variavel usar o $
+#para nÃ£o precisar toda fez que quiser utilizar uma variavel usar o $
 attach(df)
 
-#gráfico sem utilizar (nome do banco)$(nome da variavel)
+#grÃ¡fico sem utilizar (nome do banco)$(nome da variavel)
 #fica direto o nome da variavel
 plot(dia_ciclo, temperatura_basal)
